@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <title>Match Me</title>
+    <link  rel="stylesheet" href="/static/form.css">
+</head>
+<body>
+    <div class="topnav">
+          <a id="click" href="/">Home</a>
+          <a id="click" href="contact.html">Contact</a>
+          <a id="click" href="about.html">About</a>
+          <label id="time"></label>
+      <script>
+         setInterval(()=>{
+           const time = document.querySelector("#time");
+           let date = new Date();
+           let hours = date.getHours();
+           let minutes = date.getMinutes();
+           let seconds = date.getSeconds();
+           let day_night = "AM";
+           if(hours > 12){
+             day_night = "PM";
+             hours = hours - 12;
+           }
+           if(seconds < 10){
+             seconds = "0" + seconds;
+           }
+           if(minutes < 10){
+             minutes = "0" + minutes;
+           }
+           if(hours < 10){
+             hours = "0" + hours;
+           }
+           time.textContent = hours + ":" + minutes + ":" + seconds + " "+ day_night;
+         });
+      </script>
+      </div>
+<div id="picture-3">
+<div class="formbg">
+ <form  action="/signupform" method="POST" class="signupform">
+<h1>Find your friend</h1>
+<label>Fill out this form to see recomendations</label></br></br>
+      <label for="gender">Select your gender:</label>
+      <select name="gender" id="gender" required>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select><br><br>
+      <label for="age">Enter your age:</label>
+      <input type="number" id="age" name="age" min="15" max="25" required><br><br>
+      <label for="hobby1">Choose your first hobby:</label>
+      <select name="hobby1" id="hobby1" required>
+        <option value="Baking">Baking</option>
+        <option value="Bowling">Bowling</option>
+        <option value="Camping">Camping</option>
+        <option value="Card games">Card games</option>
+        <option value="Cooking">Cooking</option>
+        <option value="Drawing">Drawing</option>
+        <option value="Fishing">Fishing</option>
+        <option value="Football">Football</option>
+        <option value="Gaming">Gaming</option>
+        <option value="Gardening">Gardening</option>
+        <option value="Golf">Golf</option>
+        <option value="Kayaking">Kayaking</option>
+        <option value="Movies">Movies</option>
+        <option value="Music">Music</option>
+        <option value="Outdoors">Outdoors</option>
+        <option value="Painting">Painting</option>
+        <option value="Pets">Pets</option>
+        <option value="Photography">Photography</option>
+        <option value="Pottery">Pottery</option>
+        <option value="Reading">Reading</option>
+        <option value="Rock climbing">Rock climbing</option>
+        <option value="Roller skating">Roller skating</option>
+        <option value="Singing">Singing</option>
+        <option value="Skateboarding">Skateboarding</option>
+        <option value="Swimming">Swimming</option>
+        <option value="Technology">Technology</option>
+        <option value="Tennis">Tennis</option>
+        <option value="Travelling">Travelling</option>
+      </select><br><br>
+      <label for="hobby2">Choose your second hobby:</label>
+      <select name="hobby2" id="hobby2" required>
+        <option value="Baking">Baking</option>
+        <option value="Bowling">Bowling</option>
+        <option value="Camping">Camping</option>
+        <option value="Card games">Card games</option>
+        <option value="Cooking">Cooking</option>
+        <option value="Drawing">Drawing</option>
+        <option value="Fishing">Fishing</option>
+        <option value="Football">Football</option>
+        <option value="Gaming">Gaming</option>
+        <option value="Gardening">Gardening</option>
+        <option value="Golf">Golf</option>
+        <option value="Kayaking">Kayaking</option>
+        <option value="Movies">Movies</option>
+        <option value="Music">Music</option>
+        <option value="Outdoors">Outdoors</option>
+        <option value="Painting">Painting</option>
+        <option value="Pets">Pets</option>
+        <option value="Photography">Photography</option>
+        <option value="Pottery">Pottery</option>
+        <option value="Reading">Reading</option>
+        <option value="Rock climbing">Rock climbing</option>
+        <option value="Roller skating">Roller skating</option>
+        <option value="Singing">Singing</option>
+        <option value="Skateboarding">Skateboarding</option>
+        <option value="Swimming">Swimming</option>
+        <option value="Technology">Technology</option>
+        <option value="Tennis">Tennis</option>
+        <option value="Travelling">Travelling</option>
+      </select><br><br>
+      <label for="hobby3">Choose your third hobby:</label>
+      <select name="hobby3" id="hobby3">
+        <option value="Baking">Baking</option>
+        <option value="Bowling">Bowling</option>
+        <option value="Camping">Camping</option>
+        <option value="Card games">Card games</option>
+        <option value="Cooking">Cooking</option>
+        <option value="Drawing">Drawing</option>
+        <option value="Fishing">Fishing</option>
+        <option value="Football">Football</option>
+        <option value="Gaming">Gaming</option>
+        <option value="Gardening">Gardening</option>
+        <option value="Golf">Golf</option>
+        <option value="Kayaking">Kayaking</option>
+        <option value="Movies">Movies</option>
+        <option value="Music">Music</option>
+        <option value="Outdoors">Outdoors</option>
+        <option value="Painting">Painting</option>
+        <option value="Pets">Pets</option>
+        <option value="Photography">Photography</option>
+        <option value="Pottery">Pottery</option>
+        <option value="Reading">Reading</option>
+        <option value="Rock climbing">Rock climbing</option>
+        <option value="Roller skating">Roller skating</option>
+        <option value="Singing">Singing</option>
+        <option value="Skateboarding">Skateboarding</option>
+        <option value="Swimming">Swimming</option>
+        <option value="Technology">Technology</option>
+        <option value="Tennis">Tennis</option>
+        <option value="Travelling">Travelling</option>
+      </select><br><br>
+      <label for="phone">Enter your phone number:</label>
+      <input type="tel" id="phone" name="phone" placeholder="0123456789" pattern="[0-9]{11}" required><br><br>
+      <label for="colour1">Select your favorite color:</label>
+      <input type="color" id="colour1" name="colour1" value="" required><br><br>
+      <label for="colour2">Select your second favorite color:</label>
+      <input type="color" id="colour2" name="colour2" value=""><br><br>
+      <label for="course1">Select your first course:</label>
+      <select name="course1" id="course1" required>
+        <option value="3D Design/Ceramics">3D Design/Ceramics</option>
+        <option value="Ancient History">Ancient History</option>
+        <option value="Art, Craft&Design">Art, Craft&Design</option>
+        <option value="Biology">Biology</option>
+        <option value="Business">Business</option>
+        <option value="Chemistry">Chemistry</option>
+        <option value="Chinese">Chinese</option>
+        <option value="Classical Civilisation">Classical Civilisation</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Economics">Economics</option>
+        <option value="English Language">English Language</option>
+        <option value="English Literature ">English Literature</option>
+        <option value="EPQ">EPQ</option>
+        <option value="Film Studies">Film Studies</option>
+        <option value="French">French</option>
+        <option value="Further Mathematics">Further Mathematics</option>
+        <option value="Geography">Geography</option>
+        <option value="German">German</option>
+        <option value="Graphic Communication">Graphic Communication</option>
+        <option value="Greek (Classical)">Greek (Classical)</option>
+        <option value="History">History</option>
+        <option value="History of Art">History of Art</option>
+        <option value="Information Technology">Information Technology</option>
+        <option value="Italian">Italian</option>
+        <option value="Latin">Latin</option>
+        <option value="Law">Law</option>
+        <option value="Mathematics">Mathematics</option>
+        <option value="Media Studies">Media Studies</option>
+        <option value="Modern Greek">Modern Greek</option>
+        <option value="Music">Music</option>
+        <option value="Philosophy">Philosophy</option>
+        <option value="Photography">Photography</option>
+        <option value="Physics">Physics</option>
+        <option value="Politics">Politics</option>
+        <option value="Portuguese">Portuguese</option>
+        <option value="Psychology">Psychology</option>
+        <option value="Religious Studies">Religious Studies</option>
+        <option value="Russian">Russian</option>
+        <option value="Sociology">Sociology</option>
+        <option value="Spanish">Spanish</option>
+        <option value="Textile Design">Textile Design</option>
+        <option value="Theatre Studies">Theatre Studies</option>
+      </select><br><br>
+      <label for="course2">Select your second course:</label>
+      <select name="course2" id="course2" required>
+        <option value="3D Design/Ceramics">3D Design/Ceramics</option>
+        <option value="Ancient History">Ancient History</option>
+        <option value="Art, Craft&Design">Art, Craft&Design</option>
+        <option value="Biology">Biology</option>
+        <option value="Business">Business</option>
+        <option value="Chemistry">Chemistry</option>
+        <option value="Chinese">Chinese</option>
+        <option value="Classical Civilisation">Classical Civilisation</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Economics">Economics</option>
+        <option value="English Language">English Language</option>
+        <option value="English Literature ">English Literature</option>
+        <option value="EPQ">EPQ</option>
+        <option value="Film Studies">Film Studies</option>
+        <option value="French">French</option>
+        <option value="Further Mathematics">Further Mathematics</option>
+        <option value="Geography">Geography</option>
+        <option value="German">German</option>
+        <option value="Graphic Communication">Graphic Communication</option>
+        <option value="Greek (Classical)">Greek (Classical)</option>
+        <option value="History">History</option>
+        <option value="History of Art">History of Art</option>
+        <option value="Information Technology">Information Technology</option>
+        <option value="Italian">Italian</option>
+        <option value="Latin">Latin</option>
+        <option value="Law">Law</option>
+        <option value="Mathematics">Mathematics</option>
+        <option value="Media Studies">Media Studies</option>
+        <option value="Modern Greek">Modern Greek</option>
+        <option value="Music">Music</option>
+        <option value="Philosophy">Philosophy</option>
+        <option value="Photography">Photography</option>
+        <option value="Physics">Physics</option>
+        <option value="Politics">Politics</option>
+        <option value="Portuguese">Portuguese</option>
+        <option value="Psychology">Psychology</option>
+        <option value="Religious Studies">Religious Studies</option>
+        <option value="Russian">Russian</option>
+        <option value="Sociology">Sociology</option>
+        <option value="Spanish">Spanish</option>
+        <option value="Textile Design">Textile Design</option>
+        <option value="Theatre Studies">Theatre Studies</option>
+      </select><br><br>
+      <label for="course3">Select your third course:</label>
+      <select name="course3" id="course3" required>
+        <option value="3D Design/Ceramics">3D Design/Ceramics</option>
+        <option value="Ancient History">Ancient History</option>
+        <option value="Art, Craft&Design">Art, Craft&Design</option>
+        <option value="Biology">Biology</option>
+        <option value="Business">Business</option>
+        <option value="Chemistry">Chemistry</option>
+        <option value="Chinese">Chinese</option>
+        <option value="Classical Civilisation">Classical Civilisation</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Economics">Economics</option>
+        <option value="English Language">English Language</option>
+        <option value="English Literature ">English Literature</option>
+        <option value="EPQ">EPQ</option>
+        <option value="Film Studies">Film Studies</option>
+        <option value="French">French</option>
+        <option value="Further Mathematics">Further Mathematics</option>
+        <option value="Geography">Geography</option>
+        <option value="German">German</option>
+        <option value="Graphic Communication">Graphic Communication</option>
+        <option value="Greek (Classical)">Greek (Classical)</option>
+        <option value="History">History</option>
+        <option value="History of Art">History of Art</option>
+        <option value="Information Technology">Information Technology</option>
+        <option value="Italian">Italian</option>
+        <option value="Latin">Latin</option>
+        <option value="Law">Law</option>
+        <option value="Mathematics">Mathematics</option>
+        <option value="Media Studies">Media Studies</option>
+        <option value="Modern Greek">Modern Greek</option>
+        <option value="Music">Music</option>
+        <option value="Philosophy">Philosophy</option>
+        <option value="Photography">Photography</option>
+        <option value="Physics">Physics</option>
+        <option value="Politics">Politics</option>
+        <option value="Portuguese">Portuguese</option>
+        <option value="Psychology">Psychology</option>
+        <option value="Religious Studies">Religious Studies</option>
+        <option value="Russian">Russian</option>
+        <option value="Sociology">Sociology</option>
+        <option value="Spanish">Spanish</option>
+        <option value="Textile Design">Textile Design</option>
+        <option value="Theatre Studies">Theatre Studies</option>
+      </select><br><br>
+      <label for="year">Enter your study year:</label>
+      <select name="year" id="year" required>
+        <option value="11">Year 11</option>
+        <option value="12">Year 12</option>
+        <option value="13">Year 13</option>
+        <option value="14">Year 14</option>
+      </select><br><br>
+      <label for="bio">Write about yourself:</label><br>
+      <textarea name="bio" rows="4" cols="30" patern=""></textarea>
+      <br>
+      <input type="submit" value="Submit" style="float:right; background-color:lightgray; width:80px; height:40px; border-radius: 25px;" pattern="{0,150}" required><br><br>
+</form>
+</div>
+</div>
+</body>
+</html>

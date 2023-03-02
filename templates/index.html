@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <title>Match Me</title>
+    <link  rel="stylesheet" href="/static/style.css">
+</head>
+<body id="body">
+<div class="topnav">
+    <a id="click" href="/">Home</a>
+    <a id="click" href="contact.html">Contact</a>
+    <a id="click" href="/about">About</a>
+    {% if state %}
+    <a id="click1" href="/account">Account</a>
+    {% else %}
+    <button onclick="document.getElementById('id01').style.display='block'" style="right:20%;" class="button">Login</button>
+    {% endif %}
+    <label id="time"></label>
+      <script>
+         setInterval(()=>{
+           const time = document.querySelector("#time");
+           let date = new Date();
+           let hours = date.getHours();
+           let minutes = date.getMinutes();
+           let seconds = date.getSeconds();
+           let day_night = "AM";
+           if(hours > 12){
+             day_night = "PM";
+             hours = hours - 12;
+           }
+           if(seconds < 10){
+             seconds = "0" + seconds;
+           }
+           if(minutes < 10){
+             minutes = "0" + minutes;
+           }
+           if(hours < 10){
+             hours = "0" + hours;
+           }
+           time.textContent = hours + ":" + minutes + ":" + seconds + " "+ day_night;
+         });
+      </script>
+</div>
+{% if error %}
+<div class="alert">
+  <span class="closebtn1" onclick="this.parentElement.style.display='none';">&times;</span>
+  <strong>Error:</strong>  {{ error }}
+</div>
+{% endif %}
+{% if logout %}
+<div class="alert1">
+  <span class="closebtn1" onclick="this.parentElement.style.display='none';">&times;</span>
+  <strong>Message: </strong>  {{ logout }}
+</div>
+{% endif %}
+<div id="id01" class="modal">
+  <div id="border_form">
+  <form class="modal-content animate" action="/login" method="POST">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+    </div>
+    <div class="container">
+      <div id="space2">
+      <label id="intro">LOGIN</label>
+      </div>
+      <input type="text" placeholder="Enter Username" name="un" id="un" required>
+
+      <input type="password" placeholder="Enter Password" name="pw" id="pw" required><br>
+      <input type="checkbox" onclick="myFunction()" id="label"></input><label id="label1">Show password</label>
+
+      <button type="submit" id="submit">Log In</button>
+      <div id="space">
+
+      </div>
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" id="cancel">Cancel</button>
+      <a href="#" id="forgot">Forgot password?</a>
+      <a href="/form" id="create">Create account</a>
+      <div id="space1">
+
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+
+<script>
+var modal = document.getElementById('id01');
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+function myFunction() {
+  var x = document.getElementById("pw");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+<div class="main-pic">
+  <div class="main-pic-text">
+    <h1 style="font-size:85px">MATCH ME</h1>
+  </div>
+</div>
+<div id="text1">
+  <div style="height:400px; width:800px; position:absolute; right:2%;">
+  <label style="color:black; font-weight:600; left:375px; font-size:18px; top:95px; position:absolute;">What is Match Me?</label>
+  <label style="color:black; font-size:18px; left:92px; top:120px; position:absolute;">Match Me is an online website that helps you find friends and chat with them in real-time.</label>
+  {% if state %}
+  {% else %}
+  <label style="color:black; left:260px; font-size:18px; top:170px; position:absolute;">Create your account or sign in to use all features</label>
+  <button onclick="document.getElementById('id01').style.display='block'" style="color:white; left:510px; font-size:20px; top:250px; position:absolute; height:50px; width:100px; border:none; background-color:#f44336; border-radius:25px;">Login</button>
+  <a href="/form" id="re">Register</a>
+  {% endif %}
+  </div>
+  <div style="position:absolute;">
+  <img src="/static/picture-2.jpg" id="pic2">
+  </div>
+</div>
+</body>
+</html>

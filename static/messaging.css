@@ -1,0 +1,384 @@
+* {
+  font-family:sans-serif;
+}
+
+
+body {
+    margin:0;
+    background-size: cover;
+  }
+
+  h1 {
+    color:black;
+  }
+
+  .h1 {color:white;
+      font-size:90px;
+      font-family:sans-serif;
+      text-align:center;
+  }
+
+  a {color:black;
+  }
+
+  p { color:black;
+  }
+
+  #click {
+    color:black;
+    font-size:17px;
+    text-align: center;
+    padding: 16px 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+  }
+
+  #click1 {
+    position:fixed;
+    float:bottom;
+    bottom:15px;
+  }
+
+  .topnav {
+    overflow: hidden;
+    background-color:#E1E1E1;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  .topnav a {
+    float: left;
+    color: white;
+    text-align: center;
+    margin-top: 0px;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    font-family:Arial;
+    display: block;
+  }
+
+  .topnav a:hover {
+    background-color:gray;
+    color:white;
+  }
+
+  .topnav active {
+    background-color: #E1E1E1;
+    color: #E1E1E1;
+  }
+
+  .table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align:center;
+  }
+
+
+  .tr:nth-child(even) {
+    background-color:black;
+  }
+
+  table center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .form {border: 3px solid #f1f1f1;}
+
+  .button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .button:hover {
+    opacity: 0.8;
+  }
+
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+  }
+
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+
+  .container {
+    padding: 16px;
+  }
+
+  .span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+
+  @media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+  }
+
+  #receiver {
+    width: 100px;
+    height: 20px;
+  }
+
+  #sender {
+    width: 100px;
+    height: 20px;
+  }
+
+  #message {
+    width: 100px;
+    height: 20px;
+  }
+
+  form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+  }
+
+  form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+  }
+
+  form.example button:hover {
+    background: #0b7dda;
+  }
+
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  #time{
+    color: black;
+    font-size:20px;
+    letter-spacing: 1px;
+    float: right;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    outline: none;
+    text-transform: uppercase;
+    background-size: 400%;
+  }
+
+  .sidebar {
+    height: 100%;
+    width: 170px;
+    position: fixed;
+    z-index: 0;
+    top: 52px;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 16px;
+  }
+
+  .sidebar a {
+    text-align: left;
+    font-family:sans-serif;
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    margin-bottom:10px;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+  }
+
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }
+
+  #formcontact {
+    position:fixed;
+    width:400px;
+    left:170px;
+    top:52px;
+    height:40px;
+    z-index:0;
+  }
+
+  #contactsearch {
+    position:relative;
+    margin:0px;
+    height:40px;
+    box-sizing: border-box;
+  }
+
+  #select {
+    position:fixed;
+    width:100;
+    top:52px;
+    left:570px;
+  }
+
+  #msgs {
+    padding-bottom:65px;
+    left:570px;
+    width: calc(100% - 570px);
+    height: 100%;
+    top:51.5px;
+    overflow: auto;
+    scroll-padding-bottom: 50em;
+    position:relative;
+    z-index:-1;
+  }
+
+  .contact {
+    width:400px;
+    position:fixed;
+    top:92px;
+    left:170px;
+    height:calc(100% - 92px);
+    overflow: auto;
+  }
+
+.contact option {
+  position:relative;
+  border: solid black;
+  display: block;
+  padding: 7px 10px;
+  max-width: 400px;
+  text-align: left;
+  height:50px;
+  font-size:25px;
+}
+
+#messagebox {
+  margin:10px;
+  bottom:0;
+  position:relative;
+  left:20px;
+  right:0;
+  max-width:84%;
+  top:552px;
+  border-radius:10px;
+}
+
+#messagesubmit {
+  width: 50px;
+  padding: 20px 20px;
+  right:0px;
+  bottom: 0px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  position:fixed;
+}
+
+.right {
+  background-color:lightblue;
+  position:absolute;
+  max-width:70%;
+  right:40px;
+  float:right;
+  margin:15px auto;
+  padding:5px;
+  display:block;
+  border-radius:10px;
+}
+
+.left {
+  background-color:lavender;
+  position:absolute;
+  margin:15px auto;
+  max-width:70%;
+  display:block;
+  padding:5px;
+  border-radius:10px;
+  left:40px;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-top:52px;
+  z-index:1;
+  width: calc(100% - 40px);
+  position:fixed;
+}
+
+.closebtn1 {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn1:hover {
+  color: black;
+}
+
+
+#msg {
+  width: calc(100% - 570px);
+  padding: 12px 20px;
+  left:570px;
+  bottom: 0px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  position:fixed;
+}
+
+#bgcolor {
+  width: calc(100% - 570px);
+  left:570px;
+  height:100%;
+  position:fixed;
+  z-index:-2;
+  top:51.5px;
+}

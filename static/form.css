@@ -1,0 +1,253 @@
+  body {
+    font-family:sans-serif;
+    background-color: #E1E1E1;
+
+  }
+
+  * {
+    font-family:sans-serif;
+  }
+
+
+  body {
+      margin:0;
+      background-size: cover;
+      position: relative;
+    }
+
+    h1 {
+      color:black;
+    }
+    .h1 {color:white;
+        font-size:90px;
+        font-family:sans-serif;
+        text-align:center;
+    }
+
+    a {color:black;
+    }
+
+    p { color:black;
+    }
+
+    #click {
+      color:black;
+      font-size:17px;
+      text-align: center;
+      padding: 16px 16px;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      display: block;
+      text-decoration: none;
+    }
+
+    #click1 {
+      position:fixed;
+      float:bottom;
+      bottom:15px;
+    }
+
+    .topnav {
+      overflow: hidden;
+      background-color:#E1E1E1;
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+
+    .topnav a {
+      float: left;
+      color: white;
+      text-align: center;
+      margin-top: 0px;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      font-family:Arial;
+      display: block;
+    }
+
+    .topnav a:hover {
+      background-color:gray;
+      color:white;
+    }
+
+    .topnav active {
+      background-color: #E1E1E1;
+      color: #E1E1E1;
+    }
+
+
+
+  .tr:nth-child(even) {
+    background-color:black;
+  }
+
+  table center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .form {border: 3px solid #f1f1f1;}
+
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  .button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .button:hover {
+    opacity: 0.8;
+  }
+
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+  }
+
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+
+  .container {
+    padding: 16px;
+  }
+
+  .span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+
+  @media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+  }
+
+  .signupform{
+    font-family:Arial;
+  }
+
+  .signupform {
+    border-radius: 25px;
+    position: relative;
+    left: 20px;
+    margin: 30px;
+    max-width: 450px;
+    max-height: 1200px;
+    padding: 15px;
+    background-color: white;
+  }
+
+  #fname{
+    width:250px;
+    height:15px;
+  }
+
+  #sname{
+    width:250px;
+    height:15px;
+  }
+
+  #un{
+    width:250px;
+    height:15px;
+  }
+
+  #pw{
+    width:250px;
+    height:15px;
+  }
+
+  #email{
+    width:242px;
+    height:21px;
+    margin-top:7px;
+    margin-bottom:7px;
+    border-style: ridge;
+    border-color: #fdfdfd;
+  }
+
+  #phone{
+    border-style: ridge;
+    border-color: #fdfdfd;
+  }
+
+  #bio{
+    border-style: ridge;
+    border-color: #fdfdfd;
+  }
+
+  .submit {
+    float:right;
+  }
+
+  #time{
+    color: black;
+    font-size:20px;
+    letter-spacing: 1px;
+    float: right;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    outline: none;
+    text-transform: uppercase;
+    background-size: 400%;
+  }
+  @keyframes animate {
+    100%{
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  .wrapper span{
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background: inherit;
+  }
+  .wrapper span:first-child{
+    filter: blur(7px);
+  }
+  .wrapper span:last-child{
+    filter: blur(20px);
+  }
+
+  #picture-3 {
+    background: url("picture-3.jpg") no-repeat center;
+    background-size: cover;
+    top:52px;
+    left:50px;
+    right:50px;
+    position: absolute;
+    z-index:-1;
+  }

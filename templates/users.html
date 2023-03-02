@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+      <title>Match Me</title>
+      <link  rel="stylesheet" href="/static/users.css">
+  </head>
+  <body>
+  <div class="topnav">
+      <a id="click" class="index.html" href="/">Home</a>
+      <a id="click" href="contact.html">Contact</a>
+      <a id="click" href="about.html">About</a>
+      <label id="time"></label>
+      <script>
+         setInterval(()=>{
+           const time = document.querySelector("#time");
+           let date = new Date();
+           let hours = date.getHours();
+           let minutes = date.getMinutes();
+           let seconds = date.getSeconds();
+           let day_night = "AM";
+           if(hours > 12){
+             day_night = "PM";
+             hours = hours - 12;
+           }
+           if(seconds < 10){
+             seconds = "0" + seconds;
+           }
+           if(minutes < 10){
+             minutes = "0" + minutes;
+           }
+           if(hours < 10){
+             hours = "0" + hours;
+           }
+           time.textContent = hours + ":" + minutes + ":" + seconds + " "+ day_night;
+         });
+      </script>
+  </div>
+  <div class="sidebar">
+    <a href="/account">Account</a>
+    <a href="/message">Messaging app</a>
+    <a href="friends"  style="color:red;">Friends</a>
+    <a>Personality test</a>
+    <a href="/settings">Settings</a>
+    <a id="click1" href="/logout">Log out</a>
+  </div>
+
+<body id="body2">
+<h1 id="name">{{username[0][2]}}</h1>
+
+  <div class="slideshow-container">
+  <div class="mySlides fade">
+    <img src="/static/images/{{ filename }}" id="imguser">
+  </div>
+
+  </div>
+  <br>
+
+  <script>
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+  }
+  </script>
+
+</body>
+</html>

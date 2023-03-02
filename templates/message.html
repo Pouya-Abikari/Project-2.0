@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+      <title>Match Me</title>
+      <link  rel="stylesheet" href="/static/messaging.css">
+  </head>
+  <body onload="getMsgs('{{ chat }}')">
+  <div class="topnav">
+      <a id="click" class="index.html" href="/">Home</a>
+      <a id="click" href="contact.html">Contact</a>
+      <a id="click" href="about.html">About</a>
+      <label id="time"></label>
+      <script>
+         setInterval(()=>{
+           const time = document.querySelector("#time");
+           let date = new Date();
+           let hours = date.getHours();
+           let minutes = date.getMinutes();
+           let seconds = date.getSeconds();
+           let day_night = "AM";
+           if(hours > 12){
+             day_night = "PM";
+             hours = hours - 12;
+           }
+           if(seconds < 10){
+             seconds = "0" + seconds;
+           }
+           if(minutes < 10){
+             minutes = "0" + minutes;
+           }
+           if(hours < 10){
+             hours = "0" + hours;
+           }
+           time.textContent = hours + ":" + minutes + ":" + seconds + " "+ day_night;
+         });
+      </script>
+  </div>
+  <div class="sidebar">
+    <a href="/account">Account</a>
+    <a href="/message" style="color:red;">Messaging app</a>
+    <a href="friends"><img href="/static/people.png">Friends</a>
+    <a>Personality test</a>
+    <a href="/settings">Settings</a>
+    <a id="click1" href="/logout">Log out</a>
+  </div>
+  {% if error %}
+  <div class="alert">
+    <span class="closebtn1" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>Error:</strong>  {{ error }}
+  </div>
+  {% endif %}
+  <div id="formcontact">
+    <form class="example" action="/contacts" method="post">
+      <input type="text" placeholder="Search contacts" name="user" id="contactsearch">
+      <button type="submit" id="contactsearch"></button>
+    </form>
+  </div>
+  <div style="position:fixed;">
+    <select id="room" onchange="getMsgs(this.value)" class="contact" multiple="multiple">
+      {% for i in contacts %}
+      <option
+      {% if i == chat %}
+         selected="selected"
+      {% endif %}
+         value={{ i }}>{{ i }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div id="select">
+    <form id="form" action="">
+     <input type="text" name="msg" id="msg" placeholder="Type your message:"> <button type="submit" id="messagesubmit"></button>
+    </form>
+  </div>
+  <div style="background-image: linear-gradient(to bottom right, red, yellow);" id="bgcolor"></div>
+  <div id="msgs"></div>
+
+
+   <script>
+   function getMsgs(name) {
+     var xhttp = new XMLHttpRequest()
+     xhttp.open("GET", "/getMsgs?name="+name, true)
+     xhttp.send()
+
+     xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+          const msgs = JSON.parse(this.responseText);
+          let output = "";
+          for (let i = 0; i < msgs.length; i++) {
+            if (msgs[i][0] == name){
+              output += "<span class='left'>" + msgs[i][1] + "</span>" + "<br><p></p>";
+            } else {
+              output += "<span class='right'>" + msgs[i][1] + "</span>" + "<br><p></p>";
+            }
+        }
+      document.getElementById("msgs").innerHTML = output
+      }
+  }
+}
+   </script>
+   <script>
+    document.getElementById("msgs").scrollTop = document.getElementById("msgs").scrollHeight;
+   </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+   <script>
+     var socket = io();
+     var messages = document.getElementById('msgs');
+     var form = document.getElementById('form');
+     var input = document.getElementById('msg');
+     var room = document.getElementById('room');
+
+     form.addEventListener('submit', function(e) {
+       e.preventDefault();
+       if (input.value) {
+         let data = {room:room.value, msg:input.value};
+         socket.emit('join', data);
+         input.value = '';
+       }
+     });
+
+     socket.on('chat message', function(msg) {
+       var item = document.createElement('span');
+       item.className = "right";
+       item.textContent = msg;
+       messages.appendChild(item);
+       var br = document.createElement('br');
+       messages.appendChild(br);
+       messages.appendChild(br);
+       var p = document.createElement('p');
+       messages.appendChild(p);
+     });
+   </script>
+   </body>
+</html>

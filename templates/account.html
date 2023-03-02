@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <title>Match Me</title>
+    <meta charset="utf-8">
+    <link  rel="stylesheet" href="/static/style_account.css">
+</head>
+<body>
+<div class="topnav">
+    <a id="click" href="/">Home</a>
+    <a id="click" href="contact.html">Contact</a>
+    <a id="click" href="about.html">About</a>
+    <label id="time"></label>
+      <script>
+         setInterval(()=>{
+           const time = document.querySelector("#time");
+           let date = new Date();
+           let hours = date.getHours();
+           let minutes = date.getMinutes();
+           let seconds = date.getSeconds();
+           let day_night = "AM";
+           if(hours > 12){
+             day_night = "PM";
+             hours = hours - 12;
+           }
+           if(seconds < 10){
+             seconds = "0" + seconds;
+           }
+           if(minutes < 10){
+             minutes = "0" + minutes;
+           }
+           if(hours < 10){
+             hours = "0" + hours;
+           }
+           time.textContent = hours + ":" + minutes + ":" + seconds + " "+ day_night;
+         });
+      </script>
+</div>
+</body>
+<body id="body2">
+<div class="pic4">
+<a onclickl="avtr"><img src="static/picture-4.png" width="100" height="100" class="img123"></a>
+</div>
+<div id="avtr" class="modal">
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="Upload">
+  </form>
+</div>
+
+<style>
+a.avaimg:hover {
+  document.getElementById("avaimg").style.background-color = "darkgray";
+  document.getElementById("avaimg").innerHTML = "Click to change";
+}
+</style>
+
+<script>
+var modal = document.getElementById('avtr');
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+<label id="welcome">Welcome, {{userName}}</label>
+<div id="searchdiv">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+  {% if search | length != 0 %}
+      <ul id="myUL">
+        {% for i in search %}
+          <li><a href="Users?name={{i}}">{{ i }}</a></li>
+        {% endfor %}
+      </ul>
+  {% else %}
+        <div id="demo">No search results.</div>
+  {% endif %}
+</div>
+<div class="sidebar">
+  <a href="/account" style="color:red;">Account</a>
+  <a href="/message">Messaging app</a>
+  <a href="friends"><img href="/static/people.png">Friends</a>
+  <a>Personality test</a>
+  <a href="/settings">Settings</a>
+  <a id="click1" href="/logout">Log out</a>
+</div>
+<script>
+function myFunction() {
+  var input, filter, ul, li, i, txtValue;
+  input = document.getElementById('myInput');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myUL");
+  li = ul.getElementsByTagName('li');
+
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+</script>
+</body>
+</html>

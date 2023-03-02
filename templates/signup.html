@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <title>Match Me</title>
+    <link  rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="topnav">
+          <a id="click" href="/">Home</a>
+          <a id="click" href="contact.html">Contact</a>
+          <a id="click" href="about.html">About</a>
+          <label id="time"></label>
+      <script>
+         setInterval(()=>{
+           const time = document.querySelector("#time");
+           let date = new Date();
+           let hours = date.getHours();
+           let minutes = date.getMinutes();
+           let seconds = date.getSeconds();
+           let day_night = "AM";
+           if(hours > 12){
+             day_night = "PM";
+             hours = hours - 12;
+           }
+           if(seconds < 10){
+             seconds = "0" + seconds;
+           }
+           if(minutes < 10){
+             minutes = "0" + minutes;
+           }
+           if(hours < 10){
+             hours = "0" + hours;
+           }
+           time.textContent = hours + ":" + minutes + ":" + seconds + " "+ day_night;
+         });
+      </script>
+    </div>
+    {% if error %}
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <strong>Error:</strong>  {{ error }}
+    </div>
+    {% endif %}
+<div id="image">
+<div class="formbg">
+<form  action="/signup" method="POST" class="signupform">
+<h1>Register</h1>
+<p id="p">Already a User? <a href="/" id="a">Login on homepage</a><p>
+<input type="text" id="fname" name="fname" placeholder="First Name" pattern="{2,15}" required><br>
+<input type="text" id="sname" name="sname" placeholder="Last Name" pattern="{2,20}" required><br>
+<Input type="email" id="email" name="email" placeholder="     Email" pattern="{8,20}" required><br>
+<input type="text" id="un" name="un" placeholder="Username" pattern="{2,20}" required><br>
+<input type="text" id="pw" name="pw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" placeholder="Password" required><br>
+<p id="p"><b>Password must contain the following:</b><br>
+    A lowercase letter<br>
+    A capital (uppercase) letter<br>
+    A number<br>
+    Minimum 8 characters</p><br>
+<input type="submit" value="Submit" style="float:right; background-color:lightgray; width:80px; height:40px; border-radius: 25px; border:none; font-size:14px;" pattern="{0,150}" required><br><br>
+</form>
+</div>
+</div>
+</body>
+</html>
