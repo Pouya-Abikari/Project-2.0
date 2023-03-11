@@ -342,7 +342,7 @@ def getMsgs():
     #selects the sender and message from the MSG table where either the receiver is the value of the 'username' session variable and
     #the sender is the value of the 'chat' session variable, or the receiver is the value of the 'chat' session variable and the sender is the value of the 'username' session variable
     rows = cur.fetchall()   #This line retrieves all the rows returned by the previous SQL statement and stores them in a variable called 'rows'
-    return str(rows)     #This line returns the rows as the response of the GET request
+    return jsonify(rows)     #This line returns the rows as the response of the GET request
 
 @app.route('/createforgot')
 def createforgot():
