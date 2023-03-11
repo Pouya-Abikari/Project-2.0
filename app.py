@@ -6,6 +6,7 @@ from markupsafe import escape
 from datetime import timedelta
 import random
 from werkzeug.utils import secure_filename
+import json
 
 UPLOAD_FOLDER = 'static/images'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
