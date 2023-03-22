@@ -493,12 +493,105 @@
     }
   }
 
-  #upload {
-    align:center;
-    height:50px;
-    width:400px;
-    background-color:white;
-    left:200px;
-    top:85px;
-    position:relative;
+  table {
+    position: absolute;
+    border-collapse: collapse;
+    width: calc(100% - 170px);
+    top: 52px;
+    left: 170px;
+    z-index: -1;
+  }
+
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    background-color: lightgrey;
+  }
+
+  #upload, form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  input[type="file"], input[type="password"], input[type="text"], select {
+    margin-top: 8px;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid lightgrey;
+    width: 80%;
+    text-align: center;
+  }
+
+  input[type="submit"] {
+    margin-top: 8px;
+    padding: 8px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+
+  #warning {
+    margin-top: 8px;
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  #bg_user {
+    margin-top: 8px;
+    width: 80%;
+    text-align: center;
+  }
+
+  #p {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  #label {
+    margin-top: 8px;
+  }
+
+  #label1 {
+    font-size: 12px;
+    margin-left: 8px;
+    text-align: center;
+  }
+
+  .alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-top:52px;
+    z-index:2;
+    width: calc(100% - 40px);
+    position:fixed;
+  }
+
+  .closebtn1 {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .closebtn1:hover {
+    color: black;
   }

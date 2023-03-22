@@ -39,72 +39,99 @@
 </div>
 </body>
 <body id="body2">
-<div class="pic4">
-<img src="static/picture-4.png" width="100" height="100" class="img123">
-</div>
-<div id="avtr" class="modal">
-  <form method="post" enctype="multipart/form-data">
-    <input type="file" name="file">
-    <input type="submit" value="Upload">
-  </form>
-</div>
 
-<script>
-a.avaimg:hover {
-  document.getElementById("avaimg").style.background-color = "darkgray";
-  document.getElementById("avaimg").innerHTML = "Click to change";
-}
-</script>
+<div id="circle">
 
-<script>
-var modal = document.getElementById('avtr');
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-
-<label id="welcome">Welcome, {{userName}}</label>
-<div id="searchdiv">
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-  {% if search | length != 0 %}
-      <ul id="myUL">
-        {% for i in search %}
-          <li><a href="Users?name={{i}}">{{ i }}</a></li>
-        {% endfor %}
-      </ul>
+<style>
+#circle{
+  {% if data %}
+  background-image:linear-gradient(to bottom right, {{ data[0][7] }}, {{ data[0][8] }});
   {% else %}
-        <div id="demo">No search results.</div>
+  background-image:linear-gradient(to bottom right, red, blue);
   {% endif %}
+  position: fixed;
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  margin: 0 auto;
+  top: 45px;
+  left: 190px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+</style>
+
 </div>
+<label id="welcome">Welcome, {{userName}}</label>
+
+<div id="quote-box">
+  <h1>Quote Of The Day</h1>
+  <div id="quote"></div>
+  <div id="author"></div>
+  <button id="new-quote">New Quote</button>
+</div>
+
+
+<div class="mySlides fade">
+  <img src="/static/images/{{ filename }}" id="imguser">
+</div>
+
+{% if data %}
+<div id="dataCSS">
+  <label><b>Gender: </b>{{ data[0][1] }}</label><br>
+  <label><b>Age: </b>{{ data[0][2] }}</label><br><br>
+  <label style="font-weight:bold;">Hobbies and interests:</label><br>
+  <label><b>1. </b>{{ data[0][3] }}</label><br>
+  <label><b>2. </b>{{ data[0][4] }}</label><br>
+  <label><b>3. </b>{{ data[0][5] }}</label><br><br>
+  <label style="font-weight:bold;">Courses: (Year {{ data[0][12] }})</label><br>
+  <label><b>- </b>{{ data[0][9] }}</label><br>
+  <label><b>- </b>{{ data[0][10] }}</label><br>
+  <label><b>- </b>{{ data[0][11] }}</label><br><br>
+  <label><b>Phone: </b>{{ data[0][6] }}</label><br><br>
+  <label><b>Bio: </b>{{ data[0][13] }}</label><br>
+</div>
+{% else %}
+<div id="dataCSS">
+  <label>Fill the student form to see your details.</label>
+  <a id="formCSS" href="/compare">Form</a>
+</div>
+{% endif %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://kit.fontawesome.com/64d58efce2.js"></script>
+<script>
+  $(document).ready(function() {
+    function getQuote() {
+      axios.get('https://api.quotable.io/random')
+        .then(function(response) {
+          $('#quote').text(response.data.content);
+          $('#author').text('- ' + response.data.author);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
+
+    getQuote();
+
+    $('#new-quote').on('click', function() {
+      getQuote();
+    });
+  });
+</script>
+
+
+
 <div class="sidebar">
   <a href="/account" style="color:red;">Account</a>
   <a href="/message">Messaging app</a>
-  <a href="friends"><img href="/static/people.png">Friends</a>
-  <a>Personality test</a>
+  <a href="friends">Friends</a>
   <a href="/settings">Settings</a>
   <a id="click1" href="/logout">Log out</a>
 </div>
-<script>
-function myFunction() {
-  var input, filter, ul, li, i, txtValue;
-  input = document.getElementById('myInput');
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("myUL");
-  li = ul.getElementsByTagName('li');
 
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
-  }
-}
-</script>
 </body>
 </html>

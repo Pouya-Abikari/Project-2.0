@@ -374,11 +374,3 @@ body {
   position:fixed;
 }
 
-#bgcolor {
-  width: calc(100% - 570px);
-  left:570px;
-  height:100%;
-  position:fixed;
-  z-index:-2;
-  top:51.5px;
-}

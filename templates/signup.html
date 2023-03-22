@@ -51,7 +51,8 @@
 <input type="text" id="sname" name="sname" placeholder="Last Name" pattern="{2,20}" required><br>
 <Input type="email" id="email" name="email" placeholder="     Email" pattern="{8,20}" required><br>
 <input type="text" id="un" name="un" placeholder="Username" pattern="{2,20}" required><br>
-<input type="text" id="pw" name="pw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" placeholder="Password" required><br>
+<input type="password" id="pw" name="pw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" placeholder="Password" required><br>
+<input type="checkbox" onclick="password()" id="label"></input><label id="label1">Show password</label>
 <p id="p"><b>Password must contain the following:</b><br>
     A lowercase letter<br>
     A capital (uppercase) letter<br>
@@ -61,5 +62,15 @@
 </form>
 </div>
 </div>
+<script>
+  function password() {
+  var x = document.getElementById("pw");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 </body>
 </html>

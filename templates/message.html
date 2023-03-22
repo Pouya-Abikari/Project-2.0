@@ -40,7 +40,6 @@
     <a href="/account">Account</a>
     <a href="/message" style="color:red;">Messaging app</a>
     <a href="friends"><img href="/static/people.png">Friends</a>
-    <a>Personality test</a>
     <a href="/settings">Settings</a>
     <a id="click1" href="/logout">Log out</a>
   </div>
@@ -72,9 +71,19 @@
      <input type="text" name="msg" id="msg" placeholder="Type your message:"> <button type="submit" id="messagesubmit"></button>
     </form>
   </div>
-  <div style="background-image: linear-gradient(to bottom right, red, yellow);" id="bgcolor"></div>
+  <div id="bgcolor"></div>
   <div id="msgs"></div>
-
+<style>
+  #bgcolor {
+    background-image: linear-gradient(to bottom right, {{ bg_style }});
+    width: calc(100% - 570px);
+    left: 570px;
+    height: 100%;
+    position: fixed;
+    z-index: -2;
+    top: 51.5px;
+  }
+</style>
 
    <script>
    function getMsgs(name) {
@@ -112,7 +121,7 @@
      form.addEventListener('submit', function(e) {
        e.preventDefault();
        if (input.value) {
-         let data = {room:room.value, msg:input.value};
+         let data = {room:room.value, msg:input.value, username: session.username};
          socket.emit('join', data);
          input.value = '';
        }
@@ -120,7 +129,11 @@
 
      socket.on('chat message', function(msg) {
        var item = document.createElement('span');
-       item.className = "right";
+       if (data.username === session.username) {
+          item.className = "right";
+      } else {
+        item.className = "left";
+      }
        item.textContent = msg;
        messages.appendChild(item);
        var br = document.createElement('br');

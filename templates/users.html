@@ -39,26 +39,40 @@
   <div class="sidebar">
     <a href="/account">Account</a>
     <a href="/message">Messaging app</a>
-    <a href="friends"  style="color:red;"><img href="/static/people.png">Friends</a>
-    <a>Personality test</a>
+    <a href="friends"  style="color:red;">Friends</a>
     <a href="/settings">Settings</a>
     <a id="click1" href="/logout">Log out</a>
   </div>
 
-<body id="body2">
+<body>
 <h1 id="name">{{username[0][2]}}</h1>
-
-  <div class="slideshow-container">
-  <div class="mySlides fade">
-{% if filename %}
-    <img src="/static/images/{{ filename }}" id="imguser">
+{% if data %}
+<div id="dataCSS">
+<label>{{ data[0][0] }}</label><br>
+<label>Age {{ data[0][1] }}</label><br>
+<label>Year {{ data[0][8] }}</label><br><br>
+<label style="font-weight:bold;">Hobbies and interests:</label><br>
+<label>{{ data[0][2] }}</label><br>
+<label>{{ data[0][3] }}</label><br>
+<label>{{ data[0][4] }}</label><br><br>
+<label style="font-weight:bold;">Courses:</label><br>
+<label>{{ data[0][5] }}</label><br>
+<label>{{ data[0][6] }}</label><br>
+<label>{{ data[0][7] }}</label><br><br>
+<label>{{ data[0][9] }}</label><br>
+</div>
 {% else %}
-    <img src="/static/images/default.png" id="imguser">
+<div id="dataCSS">
+<label>The user hasn't completed the student form.</label><br>
+</div>
 {% endif %}
-  </div>
 
-  </div>
-  <br>
+<div class="slideshow-container">
+<div class="mySlides fade">
+  <img src="/static/images/{{ filename }}" id="imguser">
+</div>
+</div>
+<br>
 
   <script>
   let slideIndex = 1;

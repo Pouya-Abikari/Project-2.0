@@ -24,7 +24,11 @@
         text-align:center;
     }
 
-    a {color:black;
+    a {
+      color:white;
+      font-size:17px;
+      font-family:monospace;
+      text-align:center;
     }
 
     p { color:black;
@@ -40,12 +44,6 @@
       cursor: pointer;
       display: block;
       text-decoration: none;
-    }
-
-    #click1 {
-      position:fixed;
-      float:bottom;
-      bottom:15px;
     }
 
     .topnav {
@@ -77,8 +75,6 @@
       background-color: #E1E1E1;
       color: #E1E1E1;
     }
-
-
 
   .tr:nth-child(even) {
     background-color:black;
@@ -250,4 +246,17 @@
     right:50px;
     position: absolute;
     z-index:-1;
+  }
+
+  #click1 {
+    background-color: black;
+    color:white;
+    font-size:17px;
+    text-align: center;
+    padding: 16px 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
   }

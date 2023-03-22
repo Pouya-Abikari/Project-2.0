@@ -414,3 +414,15 @@ border-radius:25px;
     align: center;
     border-radius: 20px;
   }
+
+  #dataCSS {
+      font-size:20px;
+      color:black;
+      position: relative;
+      top: 150px;
+      left: calc(100% - 232px);
+      max-width:80%;
+      max-height:400px;
+      padding:12px;
+      border-radius:25px;
+  }

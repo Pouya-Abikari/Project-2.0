@@ -39,22 +39,108 @@
 </div>
 </body>
 <body id="body2">
+  {% if error %}
+  <div class="alert">
+    <span class="closebtn1" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>Error:</strong>  {{ error }}
+  </div>
+  {% endif %}
+<table>
+<tr>
+<th>
+{% if change %}
 <div id="upload">
   <form method="post" enctype=multipart/form-data action="/upload">
     <label>Upload pictures to your account</label>
-    <input type="file" name="file">
+    <input type="file" name="file" required>
     <input type="submit" value="Upload">
   </form>
 </div>
+{% else %}
+<div id="upload">
+  <form method="post" enctype=multipart/form-data action="/updatepic">
+    <label>Update your account picture</label>
+    <input type="file" name="file" required>
+    <input type="submit" value="Upload">
+  </form>
+
+  <a id="warning" href="/deletepic">Delete your picture</a>
+</div>
+{% endif %}
+</th>
+<th>
+<div>
+<form method="post" action="/update_pw">
+  <label>Change your password</label>
+  <input type="password" name="pw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" placeholder="Enter your new password" id="pw" required>
+  <input type="checkbox" onclick="password()" id="label"></input><label id="label1">Show password</label>
+  <p id="p"><b>Password must contain the following:</b><br>
+    A lowercase letter<br>
+    A capital (uppercase) letter<br>
+    A number<br>
+    Minimum 8 characters</p><br>
+  <input type="submit" value="Change">
+</form>
+</div>
+</th>
+</tr>
+<tr>
+<th>
+<div>
+  <form method="post" action="/bg_style">
+    <label>Change your chat background</label>
+    <select name="bg_style" id="bg_style">
+      <option value="red, yellow">Default</option>
+      <option value="blue, cyan">Sky Blue</option>
+      <option value="purple, lavender">Purple Ink</option>
+      <option value="black, white">Yin & Yang</option>
+      <option value="green, yellow">Nature Green</option>
+      <option value="yellow, black">Yellow & Black</option>
+      <option value="red, black">Red & Black</option>
+      <option value="orange, black">Orange & Black</option>
+      <option value="Green, black">Green & Black</option>
+      <option value="blue, black">Blue & Black</option>
+      <option value="pink, black">Pink & Black</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+</th>
+<th>
+<div>
+  <form method="post" action="/remove_contact">
+    <label>Choose the contact you want to remove</label>
+    <select id="contact" name="contact" class="contact" multiple="multiple">
+      {% for i in contacts %}
+      <option
+         value={{ i }}>{{ i }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="Remove">
+  </form>
+</div>
+</th>
+</tr>
+</table>
 
 <div class="sidebar">
   <a href="/account">Account</a>
   <a href="/message">Messaging app</a>
   <a href="friends"><img href="/static/people.png">Friends</a>
-  <a>Personality test</a>
   <a href="/settings" style="color:red;">Settings</a>
   <a id="click1" href="/logout">Log out</a>
 </div>
+<script>
+function password() {
+  var x = document.getElementById("pw");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 <script>
 function myFunction() {
   var input, filter, ul, li, i, txtValue;
