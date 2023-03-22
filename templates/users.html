@@ -39,7 +39,7 @@
   <div class="sidebar">
     <a href="/account">Account</a>
     <a href="/message">Messaging app</a>
-    <a href="friends"  style="color:red;">Friends</a>
+    <a href="friends"  style="color:red;"><img href="/static/people.png">Friends</a>
     <a>Personality test</a>
     <a href="/settings">Settings</a>
     <a id="click1" href="/logout">Log out</a>
@@ -50,7 +50,11 @@
 
   <div class="slideshow-container">
   <div class="mySlides fade">
+{% if filename %}
     <img src="/static/images/{{ filename }}" id="imguser">
+{% else %}
+    <img src="/static/images/default.png" id="imguser">
+{% endif %}
   </div>
 
   </div>

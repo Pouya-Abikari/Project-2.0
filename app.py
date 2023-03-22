@@ -6,7 +6,6 @@ from markupsafe import escape
 from datetime import timedelta
 import random
 from werkzeug.utils import secure_filename
-import json
 
 UPLOAD_FOLDER = 'static/images'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -343,7 +342,7 @@ def getMsgs():
     #selects the sender and message from the MSG table where either the receiver is the value of the 'username' session variable and
     #the sender is the value of the 'chat' session variable, or the receiver is the value of the 'chat' session variable and the sender is the value of the 'username' session variable
     rows = cur.fetchall()   #This line retrieves all the rows returned by the previous SQL statement and stores them in a variable called 'rows'
-    return json.dumps(rows)     #This line returns the rows as the response of the GET request
+    return rows     #This line returns the rows as the response of the GET request
 
 @app.route('/createforgot')
 def createforgot():
@@ -376,12 +375,8 @@ def on_join(data):
     cur.execute("INSERT INTO MSG (sender, receiver, msg) VALUES (?,?,?)",
     	       		( userName ,receiver , input))      #This line executes an SQL statement that inserts the userName, receiver, and input as a new row in the MSG table
     con.commit()
-    con.close()
-    S = str(receiver + ' ' + userName)   #This line combines the receiver and userName variables into a single string
-    NS = (Order(S))   #This line creates a room code by combining the receiver and userName variables and applying the Order function to it
-    roomcode = NS.replace(" ", "")
-    join_room(roomcode)     #This line join the room specified in the data passed in the 'join' event
-    emit('chat message', data['msg'], to=roomcode)      #This line emits a 'chat message' event to the room specified in the data passed
+    join_room(data['room'])     #This line join the room specified in the data passed in the 'join' event
+    emit('chat message', data['msg'], to=data['room'])      #This line emits a 'chat message' event to the room specified in the data passed
                                                             #in the 'join' event, with the data['msg'] as the data of the event
 
 def allowed_file(filename):
@@ -412,12 +407,3 @@ def avatarimg():
     cur.execute("INSERT INTO AVATAR (username, avatar) VALUES (?,?)",(session['username'],request.form['avatar']))
     con.commit()
     return 'INSERT avatar'
-
-
-def Order(S):
-    W = S.split(" ")
-    for i in range(len(W)):
-        W[i] = W[i].lower()
-    W.sort()
-
-    return ' '.join(W)
