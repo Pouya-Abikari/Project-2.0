@@ -6,6 +6,7 @@ from markupsafe import escape
 from datetime import timedelta
 import random
 from werkzeug.utils import secure_filename
+import json
 
 UPLOAD_FOLDER = 'static/images'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -369,7 +370,7 @@ def getMsgs():
     cur.execute("""SELECT sender, msg FROM MSG WHERE (receiver=? AND sender=?) OR (receiver=? AND sender=?)""", (usr,chat,chat,usr))
     #selects the sender and message from the MSG table where either the receiver is the value of the 'username' session variable and
     #the sender is the value of the 'chat' session variable, or the receiver is the value of the 'chat' session variable and the sender is the value of the 'username' session variable
-    rows = cur.fetchall()   #This line retrieves all the rows returned by the previous SQL statement and stores them in a variable called 'rows'
+    rows = json.dumps(cur.fetchall())
     return str(rows)     #This line returns the rows as the response of the GET request
 
 @socketio.on('join')
