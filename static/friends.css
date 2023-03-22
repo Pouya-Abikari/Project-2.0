@@ -1,0 +1,575 @@
+* {
+	font-family:sans-serif,
+  }
+
+
+body {
+	margin: 0;
+	font-family:sans-serif;
+	background-color:gray;
+}
+
+  .main-pic-text {
+	  text-align: center;
+	  position: absolute;
+	  top: 25%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  color: white;
+	}
+
+  .main-text-2-left{
+	  text-align:left;
+	}
+
+
+
+	   p { color:white;
+	   }
+
+	   .topnav {
+		 overflow: hidden;
+		 background-color:#E1E1E1;
+		 position: fixed;
+		 top: 0;
+		 width: 100%;
+	   }
+
+	   .topnav a {
+		 float: left;
+		 color: white;
+		 text-align: center;
+		 margin-top: 0px;
+		 padding: 14px 16px;
+		 text-decoration: none;
+		 font-size: 17px;
+		 font-family:Arial;
+		 display: block;
+	   }
+
+	   .topnav a:hover {
+		 background-color:gray;
+		 color:white;
+	   }
+
+	   .topnav active {
+		 background-color: #E1E1E1;
+		 color: #E1E1E1;
+	   }
+
+	   input[type=text], input[type=password] {
+		 width: 100%;
+		 padding: 12px 20px;
+		 margin: 8px 0;
+		 display: inline-block;
+		 border: 1px solid #ccc;
+		 box-sizing: border-box;
+	   }
+
+	   button {
+		 background-color: black;
+		 color: white;
+		 padding: 14px 16px;
+		 border: none;
+		 font-size:17px;
+		 cursor: pointer;
+	   }
+
+	   button:hover {
+		 opacity: 0.8;
+	   }
+
+	   .topnav button:hover {
+		   background-color:gray;
+		   color:white;
+	   }
+
+	   .cancelbtn {
+		 width: auto;
+		 padding: 10px 18px;
+		 background-color: #f44336;
+	   }
+
+	   .imgcontainer {
+		 text-align: center;
+		 margin: 24px 0 12px 0;
+		 position: relative;
+	   }
+
+	   img.avatar {
+		 width: 40%;
+		 border-radius: 50%;
+	   }
+
+	   .container {
+		 padding: 16px;
+	   }
+
+	   span.psw {
+		 float: right;
+		 padding-top: 16px;
+	   }
+
+	   .modal {
+		 display: none;
+		 position: fixed;
+		 z-index: 1;
+		 left: 0;
+		 top: 0;
+		 width: 100%;
+		 height: 100%;
+		 overflow: auto;
+		 background-color: rgb(0,0,0);
+		 background-color: rgba(0,0,0,0.4);
+		 padding-top: 60px;
+	   }
+
+	   .modal-content {
+		 background-color: #fefefe;
+		 margin: 5% auto 15% auto;
+		 border: 1px solid #888;
+		 width: 80%;
+	   }
+
+	   .close {
+		 position: absolute;
+		 right: 25px;
+		 top: 0;
+		 color: #000;
+		 font-size: 35px;
+		 font-weight: bold;
+	   }
+
+	   .close:hover,
+	   .close:focus {
+		 color: red;
+		 cursor: pointer;
+	   }
+
+	   .animate {
+		 -webkit-animation: animatezoom 0.6s;
+		 animation: animatezoom 0.6s
+	   }
+
+	   @-webkit-keyframes animatezoom {
+		 from {-webkit-transform: scale(0)}
+		 to {-webkit-transform: scale(1)}
+	   }
+
+	   @keyframes animatezoom {
+		 from {transform: scale(0)}
+		 to {transform: scale(1)}
+	   }
+
+	   @media screen and (max-width: 300px) {
+		 span.psw {
+			display: block;
+			float: none;
+		 }
+		 .cancelbtn {
+			width: 100%;
+		 }
+	   }
+
+	   #time{
+		 color: black;
+		 font-size:20px;
+		 letter-spacing: 1px;
+		 float: right;
+		 text-align: center;
+		 padding: 14px 16px;
+		 text-decoration: none;
+		 outline: none;
+		 text-transform: uppercase;
+		 background-size: 400%;
+	   }
+
+	   .wrapper span{
+		 height: 100%;
+		 width: 100%;
+		 border-radius: 10px;
+		 background: inherit;
+	   }
+	   .wrapper span:first-child{
+		 filter: blur(7px);
+	   }
+	   .wrapper span:last-child{
+		 filter: blur(20px);
+	   }
+
+	   #welcome1 {
+		 border: none;
+		 position: relative;
+		 left: 20px;
+		 top:22px;
+		 margin: 40px;
+		 width: 800px;
+		 height: 190px;
+		 padding: 15px;
+		 background-color:gray;
+	   }
+
+
+	   #welcome {
+		 background-color:gray;
+		 font-size:60px;
+		 color:white;
+		 text-align: center;
+		 position: absolute;
+		 top: 95px;
+		 left: 225px;
+		 max-width:80%;
+		 max-height:200px;
+		 border-radius:25px;
+	   }
+
+	   #click {
+		 color:black;
+		 font-size:17px;
+		 text-align: center;
+		 padding: 16px 16px;
+		 outline: none;
+		 border: none;
+		 cursor: pointer;
+		 display: block;
+		 text-decoration: none;
+	   }
+
+	   #click1 {
+		 position:fixed;
+		 float:bottom;
+		 bottom:15px;
+	   }
+
+	   #myInput {
+		 background-position: 10px 12px;
+		 background-repeat: no-repeat;
+		 width: 100%;
+		 font-size: 16px;
+		 padding: 12px 20px 12px 40px;
+		 border: 1px solid #ddd;
+		 margin-bottom: 12px;
+	   }
+
+	   #myUL {
+		 width: 100%;
+		 height: 150px;
+		 overflow-y: auto;
+		 list-style-type: none;
+		 padding: 0;
+		 margin: 0;
+	   }
+
+	   #myUL li a {
+		 border: 1px solid #ddd;
+		 margin-top: -1px;
+		 background-color: #f6f6f6;
+		 padding: 12px;
+		 text-decoration: none;
+		 font-size: 18px;
+		 color: black;
+		 display: block;
+	   }
+
+	   #myUL li a:hover:not(.header) {
+		 background-color: #eee;
+	   }
+
+	   .sidebar {
+		 height: 100%;
+		 width: 170px;
+		 position: fixed;
+		 z-index: 1;
+		 top: 52px;
+		 left: 0;
+		 background-color: #111;
+		 overflow-x: hidden;
+		 padding-top: 16px;
+	   }
+
+	   .sidebar a {
+		 text-align: left;
+		 font-family:sans-serif;
+		 padding: 6px 8px 6px 16px;
+		 text-decoration: none;
+		 margin-bottom:10px;
+		 font-size: 20px;
+		 color: #818181;
+		 display: block;
+	   }
+
+	   .sidebar a:hover {
+		 color: #f1f1f1;
+	   }
+
+	   @media screen and (max-height: 450px) {
+		 .sidebar {padding-top: 15px;}
+		 .sidebar a {font-size: 18px;}
+	   }
+
+	   .pic4 {
+		 border-radius: 50%;
+		 position:relative;
+		 top: 75px;
+		 left:220px;
+		 height:100px;
+		 width:100px;
+	   }
+
+	   #avaimg {
+		 font-size:20px;
+		 position: fixed;
+		 border-radius: 50%;
+		 height:100px;
+		 width:100px;
+		 text-align:center;
+		 left:0px;
+		 z-index:2;
+		 color:white;
+	   }
+
+	   .img123 {
+		 background-color: gray;
+	   }
+
+	   input[type=text], input[type=password] {
+		 width: 100%;
+		 padding: 12px 20px;
+		 margin: 8px 0;
+		 display: inline-block;
+		 border: 1px solid #ccc;
+		 box-sizing: border-box;
+	   }
+
+
+	   button {
+		 background-color: #04AA6D;
+		 color: white;
+		 padding: 14px 20px;
+		 margin: 8px 0;
+		 border: none;
+		 cursor: pointer;
+		 width: 100%;
+	   }
+
+	   button:hover {
+		 opacity: 0.8;
+	   }
+
+	   .cancelbtn {
+		 width: auto;
+		 padding: 10px 18px;
+		 background-color: #f44336;
+	   }
+
+	   .imgcontainer {
+		 text-align: center;
+		 margin: 24px 0 12px 0;
+		 position: relative;
+	   }
+
+	   img.avatar {
+		 width: 40%;
+		 border-radius: 50%;
+	   }
+
+	   .container {
+		 padding: 16px;
+	   }
+
+	   span.psw {
+		 float: right;
+		 padding-top: 16px;
+	   }
+
+	   .modal {
+		 display: none;
+		 position: fixed;
+		 z-index: 3;
+		 left: 0;
+		 top: 0;
+		 width: 100%;
+		 height: 100%;
+		 overflow: auto;
+		 background-color: rgb(0,0,0);
+		 background-color: rgba(0,0,0,0.4);
+		 padding-top: 60px;
+	   }
+
+
+	   .modal-content {
+		 background-color: #fefefe;
+		 margin: 5% auto 15% auto;
+		 border: 1px solid #888;
+		 width: 80%;
+	   }
+
+	   .close {
+		 position: absolute;
+		 right: 25px;
+		 top: 0;
+		 color: #000;
+		 font-size: 35px;
+		 font-weight: bold;
+	   }
+
+	   .close:hover,
+	   .close:focus {
+		 color: red;
+		 cursor: pointer;
+	   }
+
+
+	   .animate {
+		 -webkit-animation: animatezoom 0.6s;
+		 animation: animatezoom 0.6s
+	   }
+
+	   @-webkit-keyframes animatezoom {
+		 from {-webkit-transform: scale(0)}
+		 to {-webkit-transform: scale(1)}
+	   }
+
+	   @keyframes animatezoom {
+		 from {transform: scale(0)}
+		 to {transform: scale(1)}
+	   }
+
+
+	   @media screen and (max-width: 300px) {
+		 span.psw {
+			display: block;
+			float: none;
+		 }
+		 .cancelbtn {
+			width: 100%;
+		 }
+	   }
+
+/* Style for the container div */
+#friendsCSS {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+	left: 170px;
+	position: fixed;
+	width: calc(100% - 170px);
+	height: calc(100% - 52px);
+  }
+
+  /* Style for the search div */
+  #searchdiv {
+	margin: auto;
+	border: none;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	background-color:black;
+	font-size:25px;
+	color:white;
+	text-align: center;
+	width:50%;
+	max-height:220px;
+	padding:15px;
+	border-radius:25px;
+  }
+
+  /* Style for the input element */
+  #myInput {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+  }
+
+  /* Style for the unordered list */
+  #myUL {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+  }
+
+  /* Style for the list items */
+  #myUL li {
+	margin: 5px 0;
+  }
+
+  /* Style for the demo div */
+  #demo {
+	color: gray;
+	text-align: center;
+  }
+
+  /* Style for the friend rankings table */
+  table {
+	border-collapse: collapse;
+	width: 100%;
+	text-align: center;
+  }
+
+  /* Style for the table headers */
+  th {
+	background-color: #4CAF50;
+	color: white;
+	padding: 8px;
+  }
+
+  /* Style for the table cells */
+  td {
+	border: 1px solid #ddd;
+	padding: 8px;
+  }
+
+  /* Style for the table rows */
+  tr:nth-child(even) {
+	background-color: #f2f2f2;
+  }
+
+  /* Style for the h1 element */
+  h1 {
+	font-size: 36px;
+	font-weight: bold;
+	margin-bottom: 20px;
+  }
+
+  #rank {
+	margin: auto;
+	width: 50%;
+	height: 50%;
+	overflow: auto;
+  }
+
+  .compare-button {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+  }
+
+  .compare-button button {
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 20px 40px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 24px;
+	font-weight: bold;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+  }
+
+  .compare-button button:hover {
+	background-color: #3e8e41;
+  }
+
+  .compare-button p {
+	margin-top: 10px;
+	font-size: 16px;
+	color: white;
+	text-align: center;
+  }
