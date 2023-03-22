@@ -94,8 +94,6 @@
      xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
           const msgs = JSON.parse(this.responseText);
-          //const msgs = this.responseText;
-          console.log(msgs)
           let output = "";
           for (let i = 0; i < msgs.length; i++) {
             if (msgs[i][0] == name){
