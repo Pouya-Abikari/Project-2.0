@@ -50,7 +50,7 @@
 <th>
 {% if change %}
 <div id="upload">
-  <form method="post" enctype=multipart/form-data action="/upload">
+  <form method="post" enctype=multipart/form-data action="/upload" id="formup">
     <label>Upload pictures to your account</label>
     <input type="file" name="file" required>
     <input type="submit" value="Upload">
@@ -58,7 +58,7 @@
 </div>
 {% else %}
 <div id="upload">
-  <form method="post" enctype=multipart/form-data action="/updatepic">
+  <form method="post" enctype=multipart/form-data action="/updatepic" id="formup">
     <label>Update your account picture</label>
     <input type="file" name="file" required>
     <input type="submit" value="Upload">
@@ -78,7 +78,7 @@
     A lowercase letter<br>
     A capital (uppercase) letter<br>
     A number<br>
-    Minimum 8 characters</p><br>
+    Minimum 8 characters</p>
   <input type="submit" value="Change">
 </form>
 </div>
@@ -94,6 +94,7 @@
       <option value="blue, cyan">Sky Blue</option>
       <option value="purple, lavender">Purple Ink</option>
       <option value="black, white">Yin & Yang</option>
+      <option value="purple, cyan">Aurora Borealis</option>
       <option value="green, yellow">Nature Green</option>
       <option value="yellow, black">Yellow & Black</option>
       <option value="red, black">Red & Black</option>
@@ -101,8 +102,17 @@
       <option value="Green, black">Green & Black</option>
       <option value="blue, black">Blue & Black</option>
       <option value="pink, black">Pink & Black</option>
+      <option value="purple, black">Purple & Black</option>
+      <option value="purple, white">Purple & White</option>
+      <option value="red, white">Red & White</option>
+      <option value="orange, white">Orange & White</option>
+      <option value="Green, white">Green & White</option>
+      <option value="blue, white">Blue & White</option>
+      <option value="pink, white">Pink & White</option>
+      <option value="yellow, white">Yellow & White</option>
+      <option value="purple, blue">Purple & Blue</option>
     </select>
-    <br><br>
+    <br>
     <input type="submit" value="Submit">
   </form>
 </div>
@@ -138,25 +148,6 @@ function password() {
     x.type = "text";
   } else {
     x.type = "password";
-  }
-}
-</script>
-<script>
-function myFunction() {
-  var input, filter, ul, li, i, txtValue;
-  input = document.getElementById('myInput');
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("myUL");
-  li = ul.getElementsByTagName('li');
-
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
   }
 }
 </script>

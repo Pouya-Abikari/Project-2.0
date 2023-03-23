@@ -36,6 +36,10 @@ def form():     #a function that handles the '/form' route and returns the 'sign
 def about():        #a function that handles the '/about' route and returns the 'about.html' template
     return render_template('about.html')
 
+@app.route('/forgot')
+def forgot():       #a function that handles the '/forgot' route and returns the 'forgot.html' template
+    return render_template('forgot.html')
+
 @app.route('/compare')
 def compare():      #a function that handles the '/compare' route and returns the 'form.html' template
     return render_template('form.html')
@@ -107,7 +111,6 @@ def Users():        #a function that handles the '/Users' route
     if data == []:
         return render_template('users.html',username=username, filename=filename[0][0])
     return render_template('users.html',username=username, filename=filename[0][0], data=data)
-    #calls the Flask's render_template method which renders the 'users.html' template and returns it to the client, passing the variable 'match' as 'i' to the template.
 
 
 @app.route('/signup',methods=['POST'])
@@ -151,15 +154,15 @@ def signupform():
                         #is an sql statement that insert form data in to the table 'FORM'
         con.commit()    #saves the changes made to the database
         con.close()     #closes the connection to the database
-        return "added"
+        return redirect(url_for('account'))
     else:
         con = sqlite3.connect('login.db')       #line creates a connection to a SQLite database named 'login.db'
         cur = con.cursor()                      #creates a cursor object that is used to execute SQL commands on the database connection
         cur.execute("UPDATE FORM SET gender=?, age=?, hobby1=?, hobby2=?, hobby3=?, phone=?, colour1=?, colour2=?, course1=?, course2=?, course3=?, year=?, bio=? WHERE username=?",
-                        (request.form['gender'],request.form['age'],request.form['hobby1'],request.form['hobby2'],request.form['hobby3'],request.form['phone'],request.form['colour1'],request.form['colour2'],request.form['course1'],request.form['course2'],request.form['course3'],request.form['year'],request.form['bio'], session['username']))
+                        (request.form['gender'],request.form['age'],request.form['hobby1'],request.form['hobby2'],request.form['hobby3'],request.form['phone'],request.form['colour1'],request.form['colour2'],request.form['course1'],request.form['course2'],request.form['course3'],request.form['year'],request.form['bio'],session['username']))
         con.commit()    #saves the changes made to the database
         con.close()     #closes the connection to the database
-        return "updated"
+        return redirect(url_for('account'))
 
 @app.route('/create')
 def create():       #a function that will be executed when this route is accessed
@@ -369,7 +372,8 @@ def getMsgs():
     chat = session['chat']
     cur.execute("""SELECT sender, msg FROM MSG WHERE (receiver=? AND sender=?) OR (receiver=? AND sender=?)""", (usr,chat,chat,usr))
     #selects the sender and message from the MSG table where either the receiver is the value of the 'username' session variable and
-    #the sender is the value of the 'chat' session variable, or the receiver is the value of the 'chat' session variable and the sender is the value of the 'username' session variable
+    #the sender is the value of the 'chat' session variable, or the receiver is the value of the 'chat' session variable and the sender is the value of
+        #the 'username' session variable
     rows = json.dumps(cur.fetchall())
     return str(rows)     #This line returns the rows as the response of the GET request
 
@@ -515,11 +519,36 @@ def remove_contact():
     con.close()
     return redirect(url_for('settings'))
 
+@app.route('/reset_password', methods=['POST'])
+def reset_password():
+    con = sqlite3.connect('login.db')
+    cur = con.cursor()
+    cur.execute("SELECT * FROM USER WHERE Username=? AND Email=?",
+    (request.form['un'],request.form['email']))
+    match = len(cur.fetchall())
+    con.close()
+    if match == 0:
+        error='Wrong username and email, try again.'
+        return render_template('forgot.html', error=error)
+    else:
+        con = sqlite3.connect('login.db')
+        cur = con.cursor()
+        cur.execute("UPDATE USER SET password = ? WHERE username = ?", (request.form['pwd'], request.form['un']))
+        con.commit()
+        con.close()
+        message = "Your password has been reset."
+        return render_template('forgot.html', message=message)
+
 @app.route('/friends')
 def friends_and_courses():
     con = sqlite3.connect('login.db')
     cur = con.cursor()
     user_hobbies = cur.execute("SELECT hobby1, hobby2, hobby3 FROM FORM WHERE username = ?", (session['username'],)).fetchone()
+    if user_hobbies == None:
+        empty = "Please fill out your student form before using this feature"
+        cur.execute("SELECT username FROM USER")
+        result = [item[0] for item in cur.fetchall()]
+        return render_template('friends.html', empty=empty, search=result)
     user_courses = cur.execute("SELECT course1, course2, course3 FROM FORM WHERE username = ?", (session['username'],)).fetchone()
     other_users_data = cur.execute("SELECT username, hobby1, hobby2, hobby3, course1, course2, course3 FROM FORM WHERE username != ?", (session['username'],)).fetchall()
     similarities = []

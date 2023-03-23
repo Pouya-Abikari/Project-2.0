@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <title>Match Me</title>
+    <link  rel="stylesheet" href="/static/forgot.css">
+</head>
+<body id="body">
+<div class="topnav">
+    <a id="click" href="/">Home</a>
+    <a id="click" href="contact.html">Contact</a>
+    <a id="click" href="/about">About</a>
+    <label id="time"></label>
+      <script>
+         setInterval(()=>{
+           const time = document.querySelector("#time");
+           let date = new Date();
+           let hours = date.getHours();
+           let minutes = date.getMinutes();
+           let seconds = date.getSeconds();
+           let day_night = "AM";
+           if(hours > 12){
+             day_night = "PM";
+             hours = hours - 12;
+           }
+           if(seconds < 10){
+             seconds = "0" + seconds;
+           }
+           if(minutes < 10){
+             minutes = "0" + minutes;
+           }
+           if(hours < 10){
+             hours = "0" + hours;
+           }
+           time.textContent = hours + ":" + minutes + ":" + seconds + " "+ day_night;
+         });
+      </script>
+</div>
+<body>
+  {% if error %}
+  <div class="alert">
+    <span class="closebtn1" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>Error:</strong>  {{ error }}
+  </div>
+  {% endif %}
+  {% if message %}
+  <div class="alert1">
+    <span class="closebtn1" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>Message: </strong>  {{ message }}
+  </div>
+  {% endif %}
+	<div class="container01">
+		<h1>Password Reset</h1>
+		<form id="form3" method="post" action="/reset_password">
+			<label for="last-name" id="label3">Username</label>
+			<input type="text" id="input3" name="un" required>
+
+			<label for="email" id="label3">Email</label>
+			<input type="text" id="input3" name="email" required>
+
+      <label for="password" id="label3">New Password</label>
+      <input type="password" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" placeholder="Enter your new password" id="pwd" required>
+      <nobr><input type="checkbox" id="label" onclick="password()"><label for="label" id="label3">Show password</label></nobr>
+      <p id="p"><b>Password must contain the following:</b><br>
+        A lowercase letter<br>
+        A capital (uppercase) letter<br>
+        A number<br>
+        Minimum 8 characters</p>
+
+			<button type="submit" id="button3">Reset Password</button>
+		</form>
+	</div>
+  <script>
+    function password() {
+      var x = document.getElementById("pwd");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+  </script>
+</body>
+</html>

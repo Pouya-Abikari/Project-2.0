@@ -39,9 +39,10 @@
 </div>
 <body>
 <div id="friendsCSS">
-<table>
-<tr>
-<td>
+<table id="table">
+<tr id="tr">
+<td id="td">
+<div class="td1">
 	<h1>Search Users</h1>
 	<div id="searchdiv">
 		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
@@ -55,8 +56,14 @@
 				<div id="demo">No search results.</div>
 		  {% endif %}
 	</div>
+</div>
 </td>
-<td>
+<td id="td">
+<div class="td1">
+{% if empty %}
+	<h1>Friend Rankings</h1>
+	<label>{{ empty }}</label>
+{% else %}
 	<h1>Friend Rankings</h1>
 	<table id="rank">
 		<thead>
@@ -74,14 +81,27 @@
 			{% endfor %}
 		</tbody>
 	</table>
+{% endif %}
+</div>
 </td>
-<td>
+<td id="td">
+<div class="td1">
+{% if empty %}
 	<div class="compare-button">
 		<a href="/compare">
-		  <button>Compare Now</button>
-		  <p>Fill out our form to get started</p>
+		  <button>Fill Now</button>
 		</a>
+		<p>Complete the form to find other users<br>with similar hobbies and likeliness to you!</p>
 	  </div>
+{% else %}
+	<div class="compare-button">
+		<a href="/compare">
+		  <button>Update</button>
+		</a>
+		<p>Update your student info!</p>
+	  </div>
+{% endif %}
+</div>
 </td>
 </tr>
 </table>
