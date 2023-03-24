@@ -127,9 +127,9 @@
        }
      });
 
-     socket.on('chat message', function(msg, username) {
+     socket.on('chat message', function(msg, contact) {
        var item = document.createElement('span');
-       if ( username.value != room.value ) {
+       if ( contact != room.value ) {
         item.className = "right";
       } else {
         item.className = "left";
