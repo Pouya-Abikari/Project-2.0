@@ -32,6 +32,27 @@ def home():     #a function that handles the root URL '/'
 def form():     #a function that handles the '/form' route and returns the 'signup.html' template
     return render_template('signup.html')
 
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        con = sqlite3.connect('login.db')
+        cur = con.cursor()
+        cur.execute("INSERT INTO REPORT(name,complaint)VALUES (?,?)", (request.form['name'], request.form['complaint']))
+        con.commit()
+        con.close()
+        return render_template('contact.html', message="Your complaint has been submitted. Thank you for your feedback.")
+    return render_template('contact.html')
+
+@app.route('/table_report_create')
+def table_report():
+    con = sqlite3.connect('login.db')
+    cur = con.cursor()
+    cur.execute("""CREATE TABLE REPORT(
+                    name VARCHAR(15),
+                    complaint VARCHAR(100) NOT NULL)
+                """)
+    return "Table created successfully"
+
 @app.route('/about')
 def about():        #a function that handles the '/about' route and returns the 'about.html' template
     return render_template('about.html')
