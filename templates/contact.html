@@ -1,21 +1,189 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <Title>Love Match</Title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <title>Match Me</title>
 </head>
-    <body>
+<body id="body">
 <div class="topnav">
-  <a class="index.html" href="index.html">Home</a>
-  <a href="login.html">Login</a>
-  <a href="contact.html">Contact</a>
-  <a href="about.html">About</a>
+    <a id="click" href="/">Home</a>
+    <a id="click" href="/contact">Contact</a>
+    <a id="click" href="/about">About</a>
+    <label id="time"></label>
+      <script>
+         setInterval(()=>{
+           const time = document.querySelector("#time");
+           let date = new Date();
+           let hours = date.getHours();
+           let minutes = date.getMinutes();
+           let seconds = date.getSeconds();
+           let day_night = "AM";
+           if(hours > 12){
+             day_night = "PM";
+             hours = hours - 12;
+           }
+           if(seconds < 10){
+             seconds = "0" + seconds;
+           }
+           if(minutes < 10){
+             minutes = "0" + minutes;
+           }
+           if(hours < 10){
+             hours = "0" + hours;
+           }
+           time.textContent = hours + ":" + minutes + ":" + seconds + " "+ day_night;
+         });
+      </script>
+</div>
+<style>
+* {
+  font-family:sans-serif;
+  }
+
+  #body {
+    margin: 0;
+    font-family:sans-serif;
+    background-color: #E1E1E1;
+  }
+
+#click {
+  color:black;
+  font-size:17px;
+  text-align: center;
+  padding: 16px 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+}
+
+a {
+  color:white;
+  font-size:17px;
+  font-family:monospace;
+  text-align:center;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color:#E1E1E1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  margin-top: 0px;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  font-family:Arial;
+  display: block;
+}
+
+.topnav a:hover {
+  background-color:gray;
+  color:white;
+}
+
+.topnav active {
+  background-color: #E1E1E1;
+  color: #E1E1E1;
+}
+
+#time{
+  color: black;
+  font-size:20px;
+  letter-spacing: 1px;
+  float: right;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  outline: none;
+  text-transform: uppercase;
+  background-size: 400%;
+}
+
+/* Style for the container div */
+#contact-container {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  top: 65px;
+  left: calc(100% - 1100px);
+  position: fixed;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  padding: 20px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+/* Style for the heading */
+#contact-heading {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Style for the form */
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style for the labels */
+#contact-form label {
+  margin-top: 10px;
+  align-self: flex-start;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Style for the input fields */
+#contact-form input[type=text], #contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+
+/* Style for the submit button */
+#contact-form input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Style for the submit button when hovered */
+#contact-form input[type=submit]:hover {
+  background-color: #45a049;
+}
+  </style>
+<div id="contact-container">
+  <h1 id="contact-heading">Contact Us</h1>
+  <p>For any queries, please contact us at <b>lon21abik01@mpw.ac.uk</b></p>
+  {% if message %}
+  <p style="color:red;">{{ message }}</p>
+  {% endif %}
+  <form id="contact-form" action="/contact" method="post">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Your name..">
+    <label for="subject">Complaint</label>
+    <textarea id="subject" name="complaint" placeholder="Write something.." style="height:200px" pattern="{0,100}" required></textarea>
+    <input type="submit" value="Submit">
+  </form>
 </div>
 
-<form action="/contacts" method="post">
-  Contact: <input type="text" name="user"> <br>
-    <input type="submit">
-</form>
-
-
-
+</body>
+</html>

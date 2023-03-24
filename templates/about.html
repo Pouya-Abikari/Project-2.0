@@ -1,54 +1,348 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <Title>Love Match</Title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <title>Match Me</title>
 </head>
-    <body>
+<body id="body">
 <div class="topnav">
-  <a id="click" href="/">Home</a>
-  <a id="click" href="contact.html">Contact</a>
-  <a id="click" href="about.html">About</a>
-  <button onclick="document.getElementById('id01').style.display='block'" style="right:20%;" class="button">Login</button>
+    <a id="click" href="/">Home</a>
+    <a id="click" href="/contact">Contact</a>
+    <a id="click" href="/about">About</a>
+    <label id="time"></label>
+      <script>
+         setInterval(()=>{
+           const time = document.querySelector("#time");
+           let date = new Date();
+           let hours = date.getHours();
+           let minutes = date.getMinutes();
+           let seconds = date.getSeconds();
+           let day_night = "AM";
+           if(hours > 12){
+             day_night = "PM";
+             hours = hours - 12;
+           }
+           if(seconds < 10){
+             seconds = "0" + seconds;
+           }
+           if(minutes < 10){
+             minutes = "0" + minutes;
+           }
+           if(hours < 10){
+             hours = "0" + hours;
+           }
+           time.textContent = hours + ":" + minutes + ":" + seconds + " "+ day_night;
+         });
+      </script>
 </div>
-
-
-<html>
-<head>
 <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
+  /* CSS styles */
+  #about-section {
+    width: calc(100% - 145px);
+    left: 52px;
+    right: 52px;
+    position: fixed;
+    top: 52px;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  h1 {
+    color: red;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: black;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  #body {
+    margin: 0;
+    font-family:sans-serif;
+    background-color: #E1E1E1;
+  }
+
+#click {
+  color:black;
+  font-size:17px;
+  text-align: center;
+  padding: 16px 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+}
+
+#label {
+  font-family:sans-serif;
+  font-size:15px;
+  color:white;
+  float:left;
+  height:20px;
+  width:20px;
+  cursor: pointer;
+  margin-left:0;
+}
+
+
+#label1 {
+  font-family:sans-serif;
+  font-size:15px;
+  color:black;
+  text-align:center;
+  margin-top:4px;
+  margin-left:4px;
+  float:left;
+  height:20px;
+  cursor: pointer;
+  margin-left:0;
+}
+
+a {
+  color:white;
+  font-size:17px;
+  font-family:monospace;
+  text-align:center;
+}
+
+
+.topnav {
+  overflow: hidden;
+  background-color:#E1E1E1;
+  position: fixed;
+  top: 0;
   width: 100%;
 }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  margin-top: 0px;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  font-family:Arial;
+  display: block;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+.topnav a:hover {
+  background-color:gray;
+  color:white;
 }
-</style>
-</head>
-<body>
 
-<h2>About</h2>
+.topnav active {
+  background-color: #E1E1E1;
+  color: #E1E1E1;
+}
 
-<table>
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-  </tr>
+.button {
+  color: red;
+  font-size:17px;
+  text-align: center;
+  padding: 16px 16px;
+  background-color: #E1E1E1;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
 
-</table>
+button:hover {
+  opacity: 0.8;
+}
+
+.topnav button:hover {
+    background-color:gray;
+    color:white;
+}
+
+.container {
+  padding:16px;
+}
+
+#time{
+  color: black;
+  font-size:20px;
+  letter-spacing: 1px;
+  float: right;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  outline: none;
+  text-transform: uppercase;
+  background-size: 400%;
+}
+
+#create {
+  float: right;
+  background-color:#E1E1E1;
+  color: black;
+  padding: 6px 8px;
+  text-align: center;
+  border:none;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 17px;
+  font-family:sans-serif;
+  margin-right:0;
+  cursor: pointer;
+}
+
+#forgot {
+  float: left;
+  background-color:#E1E1E1;
+  color: black;
+  padding: 6px 8px;
+  text-align: center;
+  border:none;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 17px;
+  font-family:sans-serif;
+  margin-left:15px;
+  cursor: pointer;
+}
+
+#space {
+  height:50px;
+}
+
+#space1 {
+  height:30px;
+}
+
+#space2 {
+  width:100%;
+  text-align:center;
+}
+
+#text1 {
+  height: 500px;
+  top:763px;
+  left:50px;
+  right:50px;
+  position:absolute;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-top:52px;
+  z-index:1;
+}
+
+.alert1 {
+  padding: 20px;
+  background-color: #61de3e;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-top:52px;
+  z-index:1;
+}
+
+.closebtn1 {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn1:hover {
+  color: black;
+}
+
+#click1 {
+  background-color: black;
+  color:white;
+  font-size:17px;
+  text-align: center;
+  padding: 16px 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+}
+
+
+.container01 {
+  position: relative;
+  top: 30px;
+	width: 400px;
+	margin: 50px auto;
+	background-color: #fff;
+	padding: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 2);
+	border-radius: 20px;
+}
+
+h1 {
+	font-size: 24px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#form3 {
+	display: flex;
+	flex-direction: column;
+}
+
+#label3 {
+	font-size: 14px;
+}
+
+#input3 {
+  position: relative;
+  right: 8px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+#button3[type="submit"] {
+	background-color: #1abc9c;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.result3 {
+	margin-top: 20px;
+	font-size: 14px;
+	text-align: center;
+}
+
+
+  </style>
+
+  <div id="about-section">
+      <h1>About</h1>
+      <p>Match Me is a website that allows you to find your perfect friend. You can find your next best friend by filling out a
+        form and then we will find your perfect match for you. You can also find your friend by searching for a specific person.</p>
+      <p>Whether you're trying the app or just looking to expand your social circle, Match Me can help you connect with like-minded
+        individuals and build meaningful friendships. We use a proprietary algorithm to match you with people based on your interests
+        and college courses. so you can be sure that you're meeting people who share your values and passions.</p>
+      <p>The website is a project that was started as part of a high school A-level course in 2021 and finished in 2023 by Pouya.A.
+        During the development process, we spent a lot of time refining our messaging app, which is an integral part of the site and
+        allows you to chat with potential friends in real time. We're proud to have created a platform that is both fun and useful,
+        and we hope that you'll find your perfect match on Match Me!</p>
+  </div>
 
 </body>
 </html>
-

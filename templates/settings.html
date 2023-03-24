@@ -121,7 +121,7 @@
 <div>
   <form method="post" action="/remove_contact">
     <label>Choose the contact you want to remove</label>
-    <select id="contact" name="contact" class="contact" multiple="multiple">
+    <select id="contact" name="contact" class="contact" multiple="multiple" required>
       {% for i in contacts %}
       <option
          value={{ i }}>{{ i }}</option>
