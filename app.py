@@ -414,7 +414,7 @@ def on_join(data):
     NS = (Order(S))   #This line creates a room code by combining the receiver and userName variables and applying the Order function to it
     roomcode = NS.replace(" ", "")
     join_room(roomcode)     #This line join the room specified in the data passed in the 'join' event
-    emit('chat message', data['msg'], to=roomcode, contact=userName)      #This line emits a 'chat message' event to the room specified in the data passed
+    emit('chat message', data['msg'], to=roomcode, contact=receiver)      #This line emits a 'chat message' event to the room specified in the data passed
                                                             #in the 'join' event, with the data['msg'] as the data of the event
 
 def allowed_file(filename):

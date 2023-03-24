@@ -129,7 +129,7 @@
 
      socket.on('chat message', function(msg, contact) {
        var item = document.createElement('span');
-       if (contact == escape(session['username'])) {
+       if (contact == room.value) {
         item.className = "right";
       } else {
         item.className = "left";
