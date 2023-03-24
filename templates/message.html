@@ -129,7 +129,7 @@
 
      socket.on('chat message', function(msg, username) {
        var item = document.createElement('span');
-       if (username && room.value && username !== room.value) {
+       if ( username.value != room.value ) {
         item.className = "right";
       } else {
         item.className = "left";
